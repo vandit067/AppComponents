@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AppComponents</string>
+    <string name="menu_fragment">fragment</string>
+    <string name="open_next_fragment">Open Next Fragment</string>
+    <string name="drawer_open">Open Drawer</string>
+    <string name="drawer_close">Close Drawer</string>
+    <string name="sample_child_frgment_text">Awesome! you are in child fragment now...!!</string>
+    <string name="title_child_fragment">Child Fragment</string>
+</resources>
