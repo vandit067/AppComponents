@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,10 +17,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.vandit.samples.appcomponents.fragments.MainFragment;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener {
 
     private Toolbar mToolBar;
     private NavigationView mNavigationView;
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        mNavigationView.getMenu().getItem(0).setChecked(true);
 //        onNavigationItemSelected(mNavigationView.getMenu().getItem(0));
 
+        getSupportFragmentManager().addOnBackStackChangedListener(this);
     }
 
     private void syncActionBarArrowState() {
@@ -88,10 +91,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_navigation_view);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        mToolBar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
-       /* mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
+        /*mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Toolbar Navigation Click..", Toast.LENGTH_SHORT).show();
                 onBackPressed();
             }
         });*/
@@ -167,6 +170,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
         if (mActionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
@@ -184,8 +192,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (mDrawerLayout != null && mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             mDrawerLayout.closeDrawers();
         } else {
-            super.onBackPressed();
+            int noOfFragmentsInStack = getSupportFragmentManager().getBackStackEntryCount();
+            if(noOfFragmentsInStack > 0){
+                getSupportFragmentManager().popBackStack();
+            } else {
+                super.onBackPressed();
+            }
         }
     }
+
+    @Override
+    public void onBackStackChanged() {
+        int noOfFragmentsInStack = getSupportFragmentManager().getBackStackEntryCount();
+        if(noOfFragmentsInStack > 0){
+            mToolBar.setNavigationIcon(R.drawable.ic_back);
+            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+//            getSupportActionBar().setDisplayShowHomeEnabled(true);
+//            getSupportActionBar().setHomeButtonEnabled(true);
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        } else {
+            mToolBar.setNavigationIcon(R.drawable.ic_navigation_view);
+            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+//            getSupportActionBar().setHomeButtonEnabled(false);
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        }
+    }
+
 
 }

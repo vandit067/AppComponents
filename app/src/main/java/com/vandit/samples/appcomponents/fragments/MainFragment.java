@@ -43,8 +43,17 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if(!hidden){
+            getActivity().setTitle(getString(R.string.title_parent_fragment));
+        }
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
+        getActivity().setTitle(getString(R.string.title_parent_fragment));
     }
 
     @Override

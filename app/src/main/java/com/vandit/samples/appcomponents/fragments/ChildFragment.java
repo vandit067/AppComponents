@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -26,11 +27,14 @@ public class ChildFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if(view != null){
-            getActivity().setTitle(getString(R.string.title_child_fragment));
-            ((MainActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
-            ((MainActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            ((MainActivity)getActivity()).getSupportActionBar().setHomeAsUpIndicator(null);
+
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().setTitle(getString(R.string.title_child_fragment));
     }
 
     public static ChildFragment newInstance(){
@@ -38,5 +42,14 @@ public class ChildFragment extends Fragment {
         return childFragment;
     }
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                getActivity().onBackPressed();
+                return true;
+            default:
+                return false;
+        }
+    }
 }

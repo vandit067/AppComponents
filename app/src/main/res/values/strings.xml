@@ -6,4 +6,5 @@
     <string name="drawer_close">Close Drawer</string>
     <string name="sample_child_frgment_text">Awesome! you are in child fragment now...!!</string>
     <string name="title_child_fragment">Child Fragment</string>
+    <string name="title_parent_fragment">Parent Fragment</string>
 </resources>
