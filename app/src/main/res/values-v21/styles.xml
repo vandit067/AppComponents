@@ -6,9 +6,9 @@
                 <item name="colorPrimary">@color/colorPrimary</item>
                 <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
                 <item name="colorAccent">@color/colorAccent</item>
-                <item name="android:textColorPrimary">@color/colorPrimary</item>
+                <item name="android:textColorPrimary">@android:color/primary_text_light</item>
                 <item name="android:statusBarColor">@color/colorPrimaryDark</item>
                 <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
-                <item name="android:colorForeground">@color/foreground_material_light</item>
+                <item name="android:colorForeground">@color/colorPrimaryDark</item>
         </style>
 </resources>
