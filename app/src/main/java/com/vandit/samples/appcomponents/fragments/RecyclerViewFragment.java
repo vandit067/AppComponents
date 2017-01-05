@@ -15,6 +15,7 @@ import com.vandit.samples.appcomponents.R;
 import com.vandit.samples.appcomponents.adapters.RecyclerViewAdapter;
 import com.vandit.samples.appcomponents.beans.PersonInfo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -87,7 +88,7 @@ public class RecyclerViewFragment extends Fragment {
      * @return List<PersonInfo> person info list
      */
     private List<PersonInfo> getPersonDataList(){
-        List<PersonInfo> personDataList = null;
+        List<PersonInfo> personDataList = new ArrayList<>();
         personDataList.add(0, createPersonInfo("Taylor Swift", "Shake it off...", "https://goo.gl/images/6gxkut"));
         personDataList.add(1, createPersonInfo("Beyonce", "Hold up...", "https://goo.gl/images/P9zwj0"));
         personDataList.add(2, createPersonInfo("Eminem", "Rap god...", "https://goo.gl/images/NOo8os"));

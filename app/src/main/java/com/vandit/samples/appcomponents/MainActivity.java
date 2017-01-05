@@ -20,6 +20,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.vandit.samples.appcomponents.fragments.MainFragment;
+import com.vandit.samples.appcomponents.fragments.RecyclerViewFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener {
 
@@ -136,8 +137,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
             case R.id.fragment:
                 fragmentClass = MainFragment.class;
+                break;
+            case R.id.recycler_view:
+                fragmentClass = RecyclerViewFragment.class;
+                break;
             default:
                 fragmentClass = MainFragment.class;
+                break;
         }
         try {
             fragment = (Fragment) fragmentClass.newInstance();
