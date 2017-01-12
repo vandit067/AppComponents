@@ -1,5 +1,6 @@
 package com.vandit.samples.appcomponents.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.vandit.samples.appcomponents.MainActivity;
 import com.vandit.samples.appcomponents.R;
+import com.vandit.samples.appcomponents.callbacks.OnFragmentInteractionListner;
 
 /**
  * Created by vandi on 1/2/2017.
@@ -19,7 +20,13 @@ import com.vandit.samples.appcomponents.R;
 public class MainFragment extends Fragment implements View.OnClickListener {
 
     private Button btnOpenNextFragment;
+    private OnFragmentInteractionListner mFragmentInteractionListner;
 
+    /**
+     * Use this factory method to create new instance of
+     * this fragment using thr provider parameters.
+     * @return A new instance of fragment {@link MainFragment}
+     */
     public static MainFragment newInstance() {
         MainFragment mainFragment = new MainFragment();
         return mainFragment;
@@ -60,15 +67,28 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fragment_main_btn_open:
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                ChildFragment childFragment = ChildFragment.newInstance();
-                fragmentTransaction.add(R.id.activity_main_fl_content, childFragment);
-                fragmentTransaction.hide(this);
-                fragmentTransaction.addToBackStack(this.getClass().getSimpleName());
-                fragmentTransaction.commit();
+                if(mFragmentInteractionListner != null){
+                    mFragmentInteractionListner.onFragmentInteraction(this);
+                }
                 break;
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if(context instanceof OnFragmentInteractionListner){
+            mFragmentInteractionListner = (OnFragmentInteractionListner) context;
+        } else {
+            throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListner");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mFragmentInteractionListner = null;
     }
 }

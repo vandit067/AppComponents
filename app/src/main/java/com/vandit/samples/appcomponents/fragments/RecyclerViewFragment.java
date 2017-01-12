@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import com.vandit.samples.appcomponents.R;
 import com.vandit.samples.appcomponents.adapters.RecyclerViewAdapter;
 import com.vandit.samples.appcomponents.beans.PersonInfo;
+import com.vandit.samples.appcomponents.util.AppUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,8 +65,14 @@ public class RecyclerViewFragment extends Fragment {
 
         mRecyclerView.setHasFixedSize(true);
 
-        // Set linear layout manager in recycler view.
-        mLayoutManager = new LinearLayoutManager(getContext());
+        if(AppUtils.isTablet(getContext())){
+            // Set grid layout manager in recycler view.
+            mLayoutManager = new GridLayoutManager(getContext(), 2);
+        } else {
+            // Set linear layout manager in recycler view.
+            mLayoutManager = new LinearLayoutManager(getContext());
+        }
+
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         //Set adapter in recycler view

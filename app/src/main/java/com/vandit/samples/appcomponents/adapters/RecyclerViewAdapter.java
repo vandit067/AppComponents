@@ -6,8 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 import com.vandit.samples.appcomponents.R;
 import com.vandit.samples.appcomponents.beans.PersonInfo;
 import com.vandit.samples.appcomponents.util.CircleImageView;
@@ -41,7 +40,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         if(personViewHolder != null && !mPersonInfoList.isEmpty()){
             PersonInfo personInfo = mPersonInfoList.get(position);
             if(personInfo != null) {
-                Glide.with(mContext).load(personInfo.getmPersonAvtar()).into(personViewHolder.mPersonAvtar);
+//                Glide.with(mContext).load(R.mipmap.ic_launcher).into(personViewHolder.mPersonAvtar);
+                Picasso.with(mContext).load(personInfo.getmPersonAvtar()).into(personViewHolder.mPersonAvtar);
                 personViewHolder.mPersonName.setText(personInfo.getmPersonName());
                 personViewHolder.mPersonSong.setText(personInfo.getmPersonSong());
             }
