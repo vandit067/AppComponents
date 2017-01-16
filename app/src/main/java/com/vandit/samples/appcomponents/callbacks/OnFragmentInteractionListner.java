@@ -7,4 +7,5 @@ import android.support.v4.app.Fragment;
  */
 public interface OnFragmentInteractionListner {
     void onFragmentInteraction(Fragment fragment);
+    void onFragmentInteraction(Fragment fragment, int id);
 }

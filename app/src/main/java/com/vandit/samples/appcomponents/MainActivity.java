@@ -10,19 +10,23 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.text.TextUtilsCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
 import com.vandit.samples.appcomponents.callbacks.OnFragmentInteractionListner;
+import com.vandit.samples.appcomponents.constants.AppConstants;
 import com.vandit.samples.appcomponents.fragments.ChildFragment;
 import com.vandit.samples.appcomponents.fragments.MainFragment;
 import com.vandit.samples.appcomponents.fragments.RecyclerViewFragment;
+import com.vandit.samples.appcomponents.fragments.RecyclerViewMainFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         FragmentManager.OnBackStackChangedListener, OnFragmentInteractionListner {
@@ -58,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mNavigationView = (NavigationView) findViewById(R.id.activity_main_navigation_view);
         mNavigationView.setNavigationItemSelectedListener(this);
 
-        // initialize navigation drawer and actionbartoggle
+        // initialize navigation drawer and actionbar toggle
         mDrawerLayout = (DrawerLayout) findViewById(R.id.activity_main_drawer_layout);
         mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolBar, R.string.drawer_open, R.string.drawer_close) {
 
@@ -98,7 +102,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         boolean isBackStackEntryEmpty = (getSupportFragmentManager().getBackStackEntryCount() == 0);
         mActionBarDrawerToggle.setDrawerIndicatorEnabled(isBackStackEntryEmpty);
         if(!isBackStackEntryEmpty){
-            mActionBarDrawerToggle.setHomeAsUpIndicator(R.drawable.ic_back);
             mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         } else {
             mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
@@ -113,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_navigation_view);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        mToolBar.setNavigationIcon(R.drawable.ic_back);
         /*mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -160,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragmentClass = MainFragment.class;
                 break;
             case R.id.recycler_view:
-                fragmentClass = RecyclerViewFragment.class;
+                fragmentClass = RecyclerViewMainFragment.class;
                 break;
             default:
                 fragmentClass = MainFragment.class;
@@ -259,5 +263,41 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 // Handle click of child fragment clicks
             }
         }
+    }
+
+    @Override
+    public void onFragmentInteraction(Fragment fragment, int id) {
+        if(fragment != null){
+            if(fragment instanceof RecyclerViewMainFragment){
+                if(id > 0){
+                    switch (id){
+                        case R.id.fragment_recycler_view_main_btn_grid:
+                            openRecyclerViewFragmentBasedOnId(AppConstants.RECYCLER_VIEW_GRID, getString(R.string.recycler_view_grid));
+                            break;
+                        case R.id.fragment_recycler_view_main_btn_list:
+                            openRecyclerViewFragmentBasedOnId(AppConstants.RECYCLER_VIEW_LIST, getString(R.string.recycler_view_list));
+                            break;
+                        case R.id.fragment_recycler_view_main_btn_staggered:
+                            openRecyclerViewFragmentBasedOnId(AppConstants.RECYCLER_VIEW_STAGGERED, getString(R.string.recycler_view_staggered));
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Open {@link RecyclerViewFragment} and pass selected view to display data in recycler view
+     * @param selectedView Selected view to display in recycler view.
+     * @param title Actionbar title.
+     */
+    private void openRecyclerViewFragmentBasedOnId(int selectedView, String title){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        RecyclerViewFragment recyclerViewFragment = RecyclerViewFragment.newInstance(selectedView, title);
+        fragmentTransaction.replace(R.id.activity_main_fl_content, recyclerViewFragment, RecyclerViewFragment.class.getSimpleName());
+        fragmentTransaction.addToBackStack(RecyclerViewMainFragment.class.getSimpleName());
+        fragmentTransaction.commit();
     }
 }

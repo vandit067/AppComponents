@@ -1,10 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-
-    <!-- Navigation drawer size -->
-    <dimen name="drawer_width">260dp</dimen>
     <dimen name="raised_button_min_height">36dp</dimen>
     <dimen name="padding_left_button">16dp</dimen>
     <dimen name="padding_right_button">16dp</dimen>
