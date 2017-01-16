@@ -41,7 +41,9 @@ public class ChildFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        getActivity().setTitle(getString(R.string.title_child_fragment));
+        if(getActivity() != null) {
+            ((MainActivity)getActivity()).getSupportActionBar().setTitle(getString(R.string.title_child_fragment));
+        }
     }
 
     public static ChildFragment newInstance(){
