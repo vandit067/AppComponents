@@ -119,10 +119,6 @@ public class RecyclerViewFragment extends Fragment {
 
     private void setRecyclerViewLayoutManager(){
         switch (selectedView){
-            case AppConstants.RECYCLER_VIEW_LIST:
-                // Set linear layout manager in recycler view.
-                mLayoutManager = new LinearLayoutManager(getContext());
-                break;
             case AppConstants.RECYCLER_VIEW_GRID:
                 // Set grid layout manager in recycler view.
                 mLayoutManager = new GridLayoutManager(getContext(), 2);
@@ -131,6 +127,7 @@ public class RecyclerViewFragment extends Fragment {
                 // Set staggered grid layout manager in recycler view.
                 mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
                 break;
+            case AppConstants.RECYCLER_VIEW_LIST:
             default:
                 // Set linear layout manager in recycler view.
                 mLayoutManager = new LinearLayoutManager(getContext());

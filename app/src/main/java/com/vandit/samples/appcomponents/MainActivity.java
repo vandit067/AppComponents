@@ -27,6 +27,7 @@ import com.vandit.samples.appcomponents.fragments.ChildFragment;
 import com.vandit.samples.appcomponents.fragments.MainFragment;
 import com.vandit.samples.appcomponents.fragments.RecyclerViewFragment;
 import com.vandit.samples.appcomponents.fragments.RecyclerViewMainFragment;
+import com.vandit.samples.appcomponents.fragments.TabsFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         FragmentManager.OnBackStackChangedListener, OnFragmentInteractionListner {
@@ -165,6 +166,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.recycler_view:
                 fragmentClass = RecyclerViewMainFragment.class;
+                break;
+            case R.id.tabs:
+                fragmentClass = TabsFragment.class;
                 break;
             default:
                 fragmentClass = MainFragment.class;
