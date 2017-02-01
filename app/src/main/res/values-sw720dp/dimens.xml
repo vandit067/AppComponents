@@ -5,4 +5,16 @@
 
     <!-- Navigation drawer size -->
     <dimen name="drawer_width">300dp</dimen>
+    <dimen name="raised_button_min_height">36dp</dimen>
+    <dimen name="padding_left_button">16dp</dimen>
+    <dimen name="padding_right_button">16dp</dimen>
+    <dimen name="text_size_button_14">14sp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="text_size_button_16">16sp</dimen>
+    <dimen name="padding_16">16dp</dimen>
+    <dimen name="image_view_height">150dp</dimen>
+    <dimen name="image_view_width">150dp</dimen>
+    <dimen name="list_item_title_size">28sp</dimen>
+    <dimen name="list_view_sub_title_size">22sp</dimen>
 </resources>

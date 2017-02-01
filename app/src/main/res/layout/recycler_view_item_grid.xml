@@ -1,47 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         app:cardBackgroundColor="@color/cardview_light_background"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_16">
+            android:layout_height="match_parent">
 
-            <com.vandit.samples.appcomponents.customviews.CircleImageView
+            <ImageView
                 android:id="@+id/recycler_view_item_iv_person"
-                android:layout_width="@dimen/image_view_width"
-                android:layout_height="@dimen/image_view_height"
-                app:civ_border_color="@color/colorAccent"
-                app:civ_border_overlay="true"
-                app:civ_border_width="4dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                tools:ignore="ContentDescription" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_toRightOf="@id/recycler_view_item_iv_person"
+                android:layout_alignParentBottom="true"
+                android:background="@color/transparentBlack"
                 android:orientation="vertical"
-                android:layout_centerVertical="true">
+                android:padding="8dp">
 
                 <TextView
                     android:id="@+id/recycler_view_item_tv_person_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:textSize="@dimen/list_item_title_size" />
 
                 <TextView
@@ -52,7 +47,6 @@
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/list_view_sub_title_size" />
             </LinearLayout>
-
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>

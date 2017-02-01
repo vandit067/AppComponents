@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.vandit.samples.appcomponents.MainActivity;
 import com.vandit.samples.appcomponents.R;
 import com.vandit.samples.appcomponents.callbacks.OnFragmentInteractionListner;
 
@@ -50,17 +51,11 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        if(!hidden){
-            getActivity().setTitle(getString(R.string.title_parent_fragment));
-        }
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
-        getActivity().setTitle(getString(R.string.title_parent_fragment));
+        if(getActivity() != null) {
+            ((MainActivity)getActivity()).getSupportActionBar().setTitle(getString(R.string.title_parent_fragment));
+        }
     }
 
     @Override

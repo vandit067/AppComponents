@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.vandit.samples.appcomponents.fragments.RecyclerViewMainFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/fragment_recycler_view_main_btn_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:contentDescription="@string/recycler_view_list"
+            android:gravity="center"
+            android:paddingEnd="@dimen/padding_right_button"
+            android:paddingLeft="@dimen/padding_left_button"
+            android:paddingRight="@dimen/padding_right_button"
+            android:paddingStart="@dimen/padding_left_button"
+            android:text="@string/recycler_view_list"
+            android:textSize="@dimen/text_size_button_16"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"/>
+
+        <Button
+            android:id="@+id/fragment_recycler_view_main_btn_grid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10"
+            android:background="@color/colorAccent"
+            android:contentDescription="@string/recycler_view_grid"
+            android:gravity="center"
+            android:paddingEnd="@dimen/padding_right_button"
+            android:paddingLeft="@dimen/padding_left_button"
+            android:paddingRight="@dimen/padding_right_button"
+            android:paddingStart="@dimen/padding_left_button"
+            android:text="@string/recycler_view_grid"
+            android:textSize="@dimen/text_size_button_16"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"/>
+
+        <Button
+            android:id="@+id/fragment_recycler_view_main_btn_staggered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10"
+            android:background="@color/colorAccent"
+            android:contentDescription="@string/recycler_view_staggered"
+            android:gravity="center"
+            android:paddingEnd="@dimen/padding_right_button"
+            android:paddingLeft="@dimen/padding_left_button"
+            android:paddingRight="@dimen/padding_right_button"
+            android:paddingStart="@dimen/padding_left_button"
+            android:text="@string/recycler_view_staggered"
+            android:textSize="@dimen/text_size_button_16"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+</RelativeLayout>
