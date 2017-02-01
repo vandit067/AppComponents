@@ -3,25 +3,20 @@ package com.vandit.samples.appcomponents.adapters;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.vandit.samples.appcomponents.R;
 import com.vandit.samples.appcomponents.constants.AppConstants;
 
 /**
- * Created by vandi on 1/29/2017.
+ * Created by patelv1 on 2/1/17.
  */
 
 public class TabsFragmentPagerAdapter extends FragmentStatePagerAdapter {
-
     final int mPageCount = 3;
-    private String[] mTabsTitles = new String[]{"Grid","List", "Staggered"};
+    private String[] mTabsTitles = new String[]{"Grid", "List", "Staggered"};
     private Context mContext;
     private TabAdapterListner mTabAdapterListner;
-    public interface TabAdapterListner{
-        Fragment getRecyclerViewFragmentBasedOnId(int viewId, String title);
-    }
 
     public TabsFragmentPagerAdapter(FragmentManager fm, Context context, TabAdapterListner tabAdapterListner) {
         super(fm);
@@ -33,7 +28,7 @@ public class TabsFragmentPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         Fragment fragment = null;
         String title = mContext.getString(R.string.menu_tabs);
-        switch (position){
+        switch (position) {
             case 0:
                 fragment = mTabAdapterListner.getRecyclerViewFragmentBasedOnId(AppConstants.RECYCLER_VIEW_GRID,
                         title);
@@ -62,4 +57,9 @@ public class TabsFragmentPagerAdapter extends FragmentStatePagerAdapter {
         //Generate tabs title based on position
         return mTabsTitles[position];
     }
+
+    public interface TabAdapterListner {
+        Fragment getRecyclerViewFragmentBasedOnId(int viewId, String title);
+    }
 }
+
