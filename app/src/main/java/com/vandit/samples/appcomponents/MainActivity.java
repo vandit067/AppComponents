@@ -1,6 +1,8 @@
 package com.vandit.samples.appcomponents;
 
+import android.animation.ValueAnimator;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
@@ -19,6 +21,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 
 import com.vandit.samples.appcomponents.callbacks.OnFragmentInteractionListner;
@@ -103,12 +106,57 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         boolean isBackStackEntryEmpty = (getSupportFragmentManager().getBackStackEntryCount() == 0);
         mActionBarDrawerToggle.setDrawerIndicatorEnabled(isBackStackEntryEmpty);
         if(!isBackStackEntryEmpty){
+            animateToBackArrow();
             mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         } else {
+            animateToMenu();
             mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
         }
     }
 
+    /**
+     * Handle back arrow animation.
+     */
+    public void animateToBackArrow() {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            ValueAnimator anim = ValueAnimator.ofFloat(0f, 1.0f);
+            anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                    float slideOffset = 0;
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
+                        slideOffset = (Float) valueAnimator.getAnimatedValue();
+                    }
+                    mActionBarDrawerToggle.onDrawerSlide(mDrawerLayout, slideOffset);
+                }
+            });
+            anim.setInterpolator(new DecelerateInterpolator());
+            anim.setDuration(500);
+            anim.start();
+        }
+    }
+
+    /**
+     * Handle menu animation.
+     */
+    public void animateToMenu() {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            ValueAnimator anim = ValueAnimator.ofFloat(1.0f, 0f);
+            anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                    float slideOffset = 0;
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
+                        slideOffset = (Float) valueAnimator.getAnimatedValue();
+                    }
+                    mActionBarDrawerToggle.onDrawerSlide(mDrawerLayout, slideOffset);
+                }
+            });
+            anim.setInterpolator(new DecelerateInterpolator());
+            anim.setDuration(500);
+            anim.start();
+        }
+    }
     /**
      * Set up action bar
      */
