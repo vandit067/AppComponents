@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-        <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-                <!-- Customize your theme here. -->
-                <item name="colorPrimary">@color/colorPrimary</item>
-                <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-                <item name="colorAccent">@color/colorAccent</item>
-                <item name="android:textColorPrimary">@android:color/primary_text_light</item>
-                <item name="android:statusBarColor">@color/colorPrimaryDark</item>
-                <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
-                <item name="android:colorForeground">@color/colorPrimaryDark</item>
-                <item name="android:windowBackground">@android:color/darker_gray</item>
-                <item name="android:colorBackground">?android:attr/windowBackground</item>
-        </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@android:color/primary_text_light</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:colorForeground">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">@android:color/darker_gray</item>
+        <item name="android:colorBackground">?android:attr/windowBackground</item>
+    </style>
 
-        <dimen name="tab_max_width">0dp</dimen>
+    <dimen name="tab_max_width">0dp</dimen>
 </resources>

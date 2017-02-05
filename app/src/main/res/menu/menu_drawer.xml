@@ -17,5 +17,11 @@
             android:checked="false"
             android:icon="@drawable/ic_tabs"
             android:title="@string/menu_tabs"/>
+        <item
+            android:id="@+id/mini_navigation_drawer"
+            android:checked="false"
+            android:checkable="false"
+            android:icon="@drawable/ic_mini_navigation_drawer"
+            android:title="@string/menu_mini_nd"/>
     </group>
 </menu>

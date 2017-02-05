@@ -1,19 +1,17 @@
 package com.vandit.samples.appcomponents.adapters;
 
 import android.content.Context;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.squareup.picasso.Picasso;
 import com.vandit.samples.appcomponents.R;
 import com.vandit.samples.appcomponents.beans.PersonInfo;
 import com.vandit.samples.appcomponents.constants.AppConstants;
-import com.vandit.samples.appcomponents.customviews.CircleImageView;
 
 import java.util.List;
 

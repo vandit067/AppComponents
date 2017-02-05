@@ -1,6 +1,7 @@
 package com.vandit.samples.appcomponents;
 
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,13 +13,11 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.text.TextUtilsCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
@@ -208,6 +207,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void selectDrawerItem(MenuItem item) {
         Fragment fragment = null;
         Class fragmentClass;
+        boolean isActivityCall = false;
         switch (item.getItemId()) {
             case R.id.fragment:
                 fragmentClass = MainFragment.class;
@@ -218,24 +218,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.tabs:
                 fragmentClass = TabsFragment.class;
                 break;
+            case R.id.mini_navigation_drawer:
+                isActivityCall = true;
+                fragmentClass = MiniNavigationDrawerActivity.class;
+                startMiniNdActivity();
+                break;
             default:
                 fragmentClass = MainFragment.class;
                 break;
         }
-        try {
-            fragment = (Fragment) fragmentClass.newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        if(!isActivityCall) {
+            try {
+                fragment = (Fragment) fragmentClass.newInstance();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-        // Insert fragment by replacing any existing fragment
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.activity_main_fl_content, fragment, fragment.getClass().getSimpleName());
+            // Insert fragment by replacing any existing fragment
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.activity_main_fl_content, fragment, fragment.getClass().getSimpleName());
 //        fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
-        fragmentTransaction.commit();
+            fragmentTransaction.commit();
 
-        //Highlight the selected item in navigation view
-        item.setChecked(true);
+            //Highlight the selected item in navigation view
+            item.setChecked(true);
+        }
 
         // Set actionbar title
         setTitle(item.getTitle());
@@ -352,4 +359,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.addToBackStack(RecyclerViewMainFragment.class.getSimpleName());
         fragmentTransaction.commit();
     }
+
+    /**
+     * Start mini navigation drawer activity.
+     */
+    private void startMiniNdActivity() {
+        Intent intent = new Intent(this, MiniNavigationDrawerActivity.class);
+        startActivity(intent);
+    }
+
 }

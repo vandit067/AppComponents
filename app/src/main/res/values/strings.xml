@@ -15,4 +15,19 @@
     <string name="recycler_view_grid">Grid RecyclerView</string>
     <string name="recycler_view_staggered">Staggered RecyclerView</string>
     <string name="menu_tabs">Tabs</string>
+    <string name="menu_mini_nd">Mini Navigation Drawer</string>
+    <string name="action_settings">Settings</string>
+    <!--Mini Navigation Drawer Contentns-->
+    <string name="alarm">Alarm</string>
+    <string name="apps">Apps</string>
+    <string name="attachment">Attachments</string>
+    <string name="battery">Battery</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="book">Book</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="brightness">Brightness</string>
+    <string name="cast">Screen Cast</string>
+    <string name="send">Send</string>
+    <string name="storage">Storage</string>
+
 </resources>

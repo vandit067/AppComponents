@@ -1,13 +1,11 @@
 package com.vandit.samples.appcomponents.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.TextUtils;
@@ -21,7 +19,6 @@ import com.vandit.samples.appcomponents.adapters.RecyclerViewAdapter;
 import com.vandit.samples.appcomponents.beans.PersonInfo;
 import com.vandit.samples.appcomponents.constants.AppConstants;
 import com.vandit.samples.appcomponents.customviews.SpacesItemDecoration;
-import com.vandit.samples.appcomponents.util.AppUtils;
 
 import java.util.ArrayList;
 import java.util.List;
